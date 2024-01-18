@@ -22,7 +22,8 @@ def load_parsers():
         except ImportError as e:
             print(f"Error importing {module_path}: {e}")
     
-    return parsers
+    parser_dict = {parser.id: parser for parser in parsers}
+    return parser_dict
 
 def transform_object(obj):
     result = {}

@@ -13,7 +13,7 @@ class BaseParser(ABC):
         pass
 
 
-    def evaluateExp(self, expressions, payload=None):
+    def evaluate_exp(self, expressions, payload=None):
             try:
                 # Initialize an empty result string
                 result_str = ''
@@ -36,19 +36,20 @@ class BaseParser(ABC):
                 return result_str
             except Exception as e:
                 # Handle any exceptions that may occur during concatenation
-                print(f"Error concatenating expressions '{expressions}': {e}")
-                return None
+                return f"Error concatenating expressions '{expressions}': {e}"
             
 
         
     def parse(self, payload):
         row = {}
-
+        if not self.detect(payload):
+            return {"status": "error", "message": f"Failed to parse with {self.type}, data: {str(payload)}"}
         for field in self.config["fields"]:
             field_name = field["name"]
             try:
                 # Traverse the attribute access path
-                row[field_name] = self.evaluateExp(field["source"],payload)
+                row[field_name] = self.evaluate_exp(field["source"],payload)
+                
             except Exception as e:
                 return {"status": "error", "message": f"Failed to parse data: {str(e)}"}
         # self.save_parsed_row(row)
@@ -67,8 +68,6 @@ class BaseParser(ABC):
             return structured_table
        
 
-
-
     def load_config(self):
         config_path = Path(__file__).resolve().parent.parent / "evidence" / "parsers" / "configurations" / f"{self.type}_config.json"
 
@@ -77,3 +76,5 @@ class BaseParser(ABC):
 
         with open(config_path, 'r') as config_file:
             self.config = json.load(config_file)
+            self.id = self.config["id"]
+
