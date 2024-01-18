@@ -1,0 +1,35 @@
+{
+    "fields": [
+        {
+            "name": "id",
+            "source": [
+                "user_details.id"
+            ]
+        },
+        {
+            "name": "Full name",
+            "source": [
+                "user_details.first_name",
+                "user_details.last_name"
+            ]
+        },
+        {
+            "name": "Email",
+            "source": [
+                "user_details.email"
+            ]
+        },
+        {
+            "name": "Updated at",
+            "source": [
+                "user_details.updated_at"
+            ]
+        },
+        {
+            "name": "MFA enabled",
+            "source": [
+                "security.mfa_enabled"
+            ]
+        }
+    ]
+}

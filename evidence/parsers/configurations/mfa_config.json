@@ -1,0 +1,22 @@
+{
+    "fields": [
+        {
+            "name": "Name",
+            "source": [
+                "name"
+            ]
+        },
+        {
+            "name": "ID",
+            "source": [
+                "id"
+            ]
+        },
+        {
+            "name": "Authentication status",
+            "source": [
+                "status"
+            ]
+        }
+    ]
+}
