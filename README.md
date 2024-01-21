@@ -1,11 +1,11 @@
 # anecdotes
-# after unzip execute 
-# 1. './run_project.sh'
-# or 
-# 1. 'python -m venv venv'
-# 2. 'source venv/bin/activate'
-# 3. 'pip install -r requirements.txt'
-# 4. 'python main.py'
+ after unzip execute 
+ 1. './run_project.sh'
+ or 
+ 1. 'python -m venv venv'
+ 2. 'source venv/bin/activate'
+ 3. 'pip install -r requirements.txt'
+ 4. 'python main.py'
 
 this will start a local service that respondes to POST requests
 to the path http://10.0.0.20:8000/evidence
